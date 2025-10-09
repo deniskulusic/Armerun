@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Index</title>
+  <meta name="description" content="From-scratch Lenis smooth scroll setup in plain HTML/CSS/JS" />
+
+</head>
+
+<body>
+  <nav>
+    
+  </nav>
+
+  <main id="top">
+    <section class="header">
+  <header data-lenis-speed="8">
+    <div class="maxw container grid">
+      <div class="header-text pt-[10vh]" data-lenis-speed="-2">
+        <h1>A unique signature experiece</h1>
+        <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisi ex, aliquet at dolor ac, vehicula dictum nulla. Praesent vitae elit ut         </p>
+        <a href="" class="click-underline">
+            Explore our tours
+        </a>
+</div>
+    </div>
+    <!--
+    <div class="discovery">
+      <a href="#" class="box scroll-to" data-target="#section1">
+        <span></span><span></span><span></span>
+      </a>
+    </div>
+    -->
+    <div class="header-tint"></div>
+    
+        <img  src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="">
+    
+  </header>
+    </section>
+
+    <section class="section-1">
+        <div class="maxw container grid">
+            <h3 class="section-1-head">Unforgettable Experiences</h3>
+
+            <div class="section-1-p">
+            <p>Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <a href="" class="click-underline click-underline-gold">Explore our experiences</a>
+            </div>
+
+            <div class="buttons-slider">
+            <button class="slider-btn prev" aria-label="Previous" disabled>
+                <div>
+
+                </div>
+            </button>
+            <button class="slider-btn next" aria-label="Next">
+                <div>
+                    
+                </div>
+            </button>
+            </div>
+        </div>
+        <div class="maxw container grid slider-container">
+            <div class="slider">
+            <div class="slider-viewport">
+                <div class="slider-track">
+                <!-- Each card has background image + title -->
+                <article class="card" style="background-image:url('https://picsum.photos/id/1015/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1016/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1025/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1031/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1041/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1056/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                <article class="card" style="background-image:url('https://picsum.photos/id/1062/640/720');">
+                    <h4>City Adventure</h4>
+                </article>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-2">
+  <div class="section-2-maxw">
+    <div class="section-2-left">
+      <picture>
+        <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="">
+      </picture>
+    </div>
+
+    <div class="section-2-right">
+      <div class="section-2-right-up">
+        <div>
+          <div class="section-2-numbers">
+            <span class="num-swap-wrap">
+              <span class="section-2-numbers-current num-swap">01</span>
+            </span>
+            / <span class="section-2-numbers-all">05</span>
+          </div>
+          <h2>Hidden gems</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+        </div>
+
+        <div class="buttons-slider">
+          <button class="slider-btn prev" aria-label="Previous">
+            <div></div>
+          </button>
+          <button class="slider-btn next" aria-label="Next">
+            <div></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="section-2-right-down grid">
+        <!-- ACTIVE, visible containers -->
+        <div class="section-2-right-down-left">
+          <!-- initial active text goes here; JS will swap this block -->
+          <div class="active-left">
+            <h4>Armerun specials</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+            <a href="#" class="click-underline click-underline-gold">Read more</a>
+          </div>
+        </div>
+
+        <div class="section-2-right-down-right">
+          <div class="section-2-right-down-right-holder">
+            <!-- initial active image goes here; JS will swap this block -->
+            <div class="fit active-right">
+              <picture>
+                <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Yacht bow at golden hour">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIDDEN: Author all slides here; JS reads from this HTML -->
+      <div class="section-2-slides" aria-hidden="true" hidden>
+        <!-- Slide 1 -->
+        <article class="slide" data-number="01">
+          <div class="slide-text">
+            <h4>Armerun specials</h4>
+            <p>Discover tucked-away locales and intimate moments that redefine luxury travel.</p>
+            <a href="#" class="click-underline click-underline-gold">Read more</a>
+          </div>
+          <div class="slide-picture">
+            <picture>
+              <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Yacht bow at golden hour">
+            </picture>
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="slide" data-number="02">
+          <div class="slide-text">
+            <h4>Coastal flavors</h4>
+            <p>Savor chef-curated menus inspired by the Adriatic—fresh, simple, unforgettable.</p>
+            <a href="#" class="click-underline click-underline-gold">Explore menu</a>
+          </div>
+          <div class="slide-picture">
+            <picture>
+              <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Elegant seafood plating">
+            </picture>
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="slide" data-number="03">
+          <div class="slide-text">
+            <h4>Sunset routes</h4>
+            <p>Chase the horizon across serene channels and dramatic cliffs at dusk.</p>
+            <a href="#" class="click-underline click-underline-gold">View routes</a>
+          </div>
+          <div class="slide-picture">
+            <picture>
+              <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Sunset over calm sea">
+            </picture>
+          </div>
+        </article>
+
+        <!-- Slide 4 -->
+        <article class="slide" data-number="04">
+          <div class="slide-text">
+            <h4>Island rituals</h4>
+            <p>Unwind with bespoke wellness rituals inspired by island botanicals.</p>
+            <a href="#" class="click-underline click-underline-gold">See wellness</a>
+          </div>
+          <div class="slide-picture">
+            <picture>
+              <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Spa terrace with sea view">
+            </picture>
+          </div>
+        </article>
+
+        <!-- Slide 5 -->
+        <article class="slide" data-number="05">
+          <div class="slide-text">
+            <h4>Harbor nights</h4>
+            <p>Dock beneath starlit skylines and revel in the charm of historic marinas.</p>
+            <a href="#" class="click-underline click-underline-gold">Plan a stay</a>
+          </div>
+          <div class="slide-picture">
+            <picture>
+              <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="Nighttime harbor lights">
+            </picture>
+          </div>
+        </article>
+      </div>
+      <!-- /hidden slides -->
+    </div>
+  </div>
+    </section>
+    <section class="section-3">
+        <div class="maxw grid container">
+            <div class="saction-3-left">
+                <div class="saction-3-left-holder">
+                    <picture>
+                        <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp" alt="">
+                    </picture>
+                </div>
+            </div>
+            <div class="saction-3-right">
+                
+                <img src="assets/img/block-illustration-2.svg fill.png" alt="">
+                <h2>Sunset sailing tours</h2>
+                <p>
+                    Here, <span>farm-to-table cuisine</span>
+                    reflects our commitment to
+                    culinary excellence and caring
+                    for the land. Sink your teeth into
+                    Ranch-grown fare.
+                </p>
+                <a href="" class="click-underline click-underline-gold">Explore our experiences</a>
+            </div>
+        </div>
+    </section>
+    <section class="paralax">
+
+    </section>
+  </main>
+
+  <!-- Lenis from CDN (non-module build). If it fails to load, the page will still work with native scrolling. -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/dist/lenis.min.js"></script>
+
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
