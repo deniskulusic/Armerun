@@ -73,7 +73,7 @@ lenis.on("scroll", ({ scroll }) => {
     el.style.transform = `translate3d(0, ${scroll * speed * SCALE}px, 0)`;
   });
 });
-/*
+
 const viewport = document.querySelector('.slider-viewport');
   const track = document.querySelector('.slider-track');
   const cards = Array.from(track.querySelectorAll('.card'));
@@ -127,7 +127,7 @@ const viewport = document.querySelector('.slider-viewport');
 
   // Initialize
   update();
-*/
+
  const root      = document.querySelector('.section-2');
   const prevBtn   = root.querySelector('.slider-btn.prev');
   const nextBtn   = root.querySelector('.slider-btn.next');
