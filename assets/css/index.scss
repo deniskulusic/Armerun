@@ -1525,4 +1525,14 @@ width: 25vw
   background-color: rgba($color: #000000, $alpha: 1);
   color: white;
 }
+.menu-div h2 {
+  cursor: pointer;
+  color: black !important;
+  margin-bottom: 32px;
+}
+.lngo {
+  font-size: 28px;
+  color: black !important;
+  position: relative;
+}
 }

@@ -1582,4 +1582,14 @@ h4 .word-token {
 .inverted .main-button:hover {
   background-color: black;
   color: white;
+}
+.inverted .menu-div h2 {
+  cursor: pointer;
+  color: black !important;
+  margin-bottom: 32px;
+}
+.inverted .lngo {
+  font-size: 28px;
+  color: black !important;
+  position: relative;
 }/*# sourceMappingURL=index.css.map */
