@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>About Us</title>
+</head>
+
+<body>
+    <!-- MENU Structure (Copied from index.html) -->
+    <div class="menu-full">
+        <div class="navbar">
+            <div class="han-menu-full">
+                <div class="menu-text">MENU </div>
+                <div class="han-menu">
+                    <div class="han-burger"></div>
+                </div>
+            </div>
+            <img src="assets/img/Armerun-white.svg" onClick="location.href='Index.html'" class="flex" alt="Logo">
+            <img src="assets/img/Armerun.svg" onClick="location.href='Index.html'" class="none" alt="Logo">
+            <button class="main-button button-header">
+                <a href="">Explore our offers</a>
+            </button>
+        </div>
+        <div class="menu-div maxw grid container">
+            <div class="menu-col-left">
+                <h2 onClick="location.href='Index.html'"> Home </h2>
+                <h2 onClick="location.href='about.html'"> Armerun </h2>
+                <h2 onClick="location.href='Expirience.html'">Experience </h2>
+                <h2 onClick="location.href='Destination.html'">Destinations </h2>
+                <h2 onClick="location.href='Inquire.html'">Inquire Now</h2>
+                <div class="lng">
+                    <div class="lngo">HR</div>
+                    <div class="lngo">ENG</div>
+                    <div class="lngo">DE</div>
+                    <div class="lngo">IT</div>
+                </div>
+            </div>
+            <div class="menu-col-right">
+                <div class="submenu-links">
+                    <a href="#">Blue cave</a>
+                    <a href="#">Kornati islands</a>
+                    <a href="#">Transfer to Brač</a>
+                    <a href="#">Three island — Kaprije</a>
+                    <a href="#">Sunset sailing</a>
+                </div>
+                <div class="menu-socials">
+                    <!-- Facebook -->
+                    <a href="#" class="social-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" class="social-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <!-- Twitter/X -->
+                    <a href="#" class="social-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" class="social-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33zM9.75 15.02V8.5l5.75 3.26z">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="#" class="social-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 1 0-1 13.6 6.84 6.84 0 0 0 6-6.8V9.63a7.35 7.35 0 0 0 4.25 1.31v-3.44a3.85 3.85 0 0 1-.02-.81z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="about-hero-section">
+            <div class="about-hero-pin">
+                <div class="about-hero-content">
+                    <!-- Left Image -->
+                    <div class="ah-side ah-left">
+                        <img src="https://picsum.photos/id/101/600/800" alt="Left">
+                    </div>
+
+                    <!-- Center Main Image -->
+                    <div class="ah-center">
+                        <div class="ah-center-img-holder">
+                            <img src="https://picsum.photos/id/103/1200/1600" alt="Center">
+                            <div class="ah-center-overlay-tint"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overlay (Independent) -->
+                <div class="ah-overlay">
+                    <h1>Your
+                        Tailored
+                        Elafonisi
+                        Escape</h1>
+                </div>
+
+                <!-- Right Image -->
+                <div class="ah-side ah-right">
+                    <img src="https://picsum.photos/id/104/600/800" alt="Right">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- NEXT SECTION (Placeholder) -->
+        <!-- INTRODUCTION SECTION -->
+        <section class="introduction-about first-section">
+            <div class="maxw container grid">
+
+
+                <div class="col-left">
+                    <!-- Reusing class for splitChars animation from index.js logic -->
+                    <h2 class="s-a-p-3-img-text-el-1">WHERE THE SKY TOUCHES THE SEA</h2>
+                </div>
+                <div class="col-right">
+                    <h4 class="reveal-text">A BESPOKE CRETE DAY TRIP TO ELAFONISI — WHERE NATURE’S ART AND HUMAN
+                        STILLNESS
+                        CONVERGE.</h4>
+                    <div class="intro-body reveal-text" style="transition-delay: 0.1s;">
+                        <p>Some destinations are admired. Others are <em>felt</em>.</p>
+                        <p>Your private Elafonisi tour in Crete is one of those rare journeys where time stretches,
+                            breath
+                            slows, and the world quiets.</p>
+                        <p>Traveling across the golden expanse of West Crete, your private driver and local guide lead
+                            you
+                            through mountain villages and olive groves scented with thyme. The winding road through
+                            Topolia
+                            Gorge opens like a prologue — a prelude to paradise.</p>
+                        <p>Then, suddenly, the landscape breathes out into Elafonisi Beach, a place where the Aegean and
+                            Libyan Seas intertwine in hues of blue, emerald, and silver. The soft pink-white sands of
+                            Elafonisi island shimmer under the Cretan sun, whispering stories of tides, wind, and time.
+                        </p>
+                    </div>
+                    <a href="#" class="read-more reveal-text" style="transition-delay: 0.2s;">READ MORE +</a>
+                </div>
+            </div>
+        </section>
+        <!-- HIGHLIGHTS SECTION -->
+
+
+        <!-- ARGO SECTIONS -->
+        <section class="s-a-p-2">
+            <div class="maxw grid">
+                <div class="s-a-p-2-img-1">
+                    <div class="s-a-p-2-img-1-holder">
+                        <picture>
+                            <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp"
+                                alt="">
+                        </picture>
+                    </div>
+                    <div class="s-a-p-2-img-2">
+                        <div class="s-a-p-2-img-2-holder">
+                            <picture>
+                                <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp"
+                                    alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="s-a-p-3">
+            <div class="maxw grid">
+                <div class="s-a-p-3-img-1">
+                    <div class="s-a-p-3-img-1-holder">
+                        <picture>
+                            <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp"
+                                alt="">
+                        </picture>
+                    </div>
+                    <div class="s-a-p-3-img-2">
+                        <div class="s-a-p-3-img-2-holder">
+                            <picture>
+                                <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp"
+                                    alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-a-p-3-img-text">
+                    <div class="s-a-p-3-img-text-el">
+                        <h2 class="s-a-p-3-img-text-el-1">PREMIUM WELLNESS EXPERIENCE</h2>
+                        <p class="s-a-p-3-img-text-el-2 reveal-text"> For those who desire a deeper level of care, Argo
+                            offers exclusive access to leading specialists,
+                            advanced health diagnostics and expert led
+                            workshops. Upon request, private consultations with
+                            doctors, nutritionists and longevity experts, along
+                            with comprehensive lab testing, provide invaluable
+                            insights—ensuring your wellness journey is both
+                            transformative and indulgent.
+                        </p>
+                    </div>
+
+                    <div class="s-a-p-3-img-text-el">
+                        <h2 class="s-a-p-3-img-text-el-1">PERSONALIZED TRAINING & WELLNESS SESSIONS</h2>
+                        <p class="s-a-p-3-img-text-el-2 reveal-text"> From energizing movement to deep relaxation,
+                            every session aligns with your rhythm and goals.
+                            Whether you prefer dynamic training, restorative
+                            practices, or mindful breathwork by the sea, your
+                            wellness journey is fully adaptable. Structured or
+                            spontaneous, every detail is curated to your exact
+                            specifications
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hover-slider-section">
+            <!-- Backgrounds -->
+            <div class="hs-bg-container">
+                <!-- Default BG -->
+                <div class="hs-bg-layer active" data-bg="default">
+                    <img src="assets/img/princess_x95_hi_res-8467-credit-quin-bisset-rt-bow-and-port-light-facelift.webp"
+                        alt="Default">
+                    <div class="hs-overlay"></div>
+                </div>
+                <!-- Link 1 BG -->
+                <div class="hs-bg-layer" data-bg="link1">
+                    <img src="https://picsum.photos/id/48/1920/1080" alt="Link 1">
+                    <div class="hs-overlay"></div>
+                </div>
+                <!-- Link 2 BG -->
+                <div class="hs-bg-layer" data-bg="link2">
+                    <img src="https://picsum.photos/id/54/1920/1080" alt="Link 2">
+                    <div class="hs-overlay"></div>
+                </div>
+                <!-- Link 3 BG -->
+                <div class="hs-bg-layer" data-bg="link3">
+                    <img src="https://picsum.photos/id/66/1920/1080" alt="Link 3">
+                    <div class="hs-overlay"></div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="hs-content maxw container">
+                <div class="hs-header fade-in-up">
+                    <h4>OUR HOTELS</h4>
+                    <h2>EL <em>LUJO</em> DE VIVIR<br>DESPACIO</h2>
+                </div>
+
+                <div class="hs-links-wrapper fade-in-up">
+                    <div class="hs-link" data-target="link1">
+                        <span class="hs-location">LANZAROTE</span>
+                        <span class="hs-name">HOTEL FARIONES</span>
+                        <a href="" class="main-button button-white button-small">
+                            <div>Explore our</div>
+                        </a>
+                    </div>
+
+                    <div class="hs-separator"></div>
+
+                    <div class="hs-link" data-target="link2">
+                        <span class="hs-location">LANZAROTE</span>
+                        <span class="hs-name">HOTEL PRINCESA YAIZA</span>
+                        <a href="" class="main-button button-white button-small">
+                            <div>Explore our</div>
+                        </a>
+                    </div>
+
+                    <div class="hs-separator"></div>
+
+                    <div class="hs-link" data-target="link3">
+                        <span class="hs-location">TENERIFE</span>
+                        <span class="hs-name">HOTEL AGUERE</span>
+                        <a href="" class="main-button button-white button-small">
+                            <div>Explore our</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="highlights-section ">
+            <div class="maxw grid">
+
+
+                <div class="hl-col-left">
+                    <div class="hl-img-wrapper">
+                        <img src="https://picsum.photos/id/1015/600/400" alt="The Gorge of Giants" class="hl-img-left">
+                    </div>
+                    <div class="hl-img-wrapper hl-img-wrapper-small">
+                        <img src="https://picsum.photos/id/1016/500/700" alt="The Island of Light" class="hl-img-left">
+                    </div>
+                </div>
+
+                <div class="hl-col-center">
+                    <h2>MOMENTS</h2>
+                    <div class="hl-list">
+                        <div class="hl-item reveal-text">
+                            <h3>The Gorge of Giants</h3>
+                            <p>Follow the breathtaking Topolia Gorge, where the wind sings through the cliffs once
+                                crossed by the mythical giant Talos — a wild prelude to the sea.</p>
+                        </div>
+                        <div class="hl-item reveal-text">
+                            <h3>The Island of Light</h3>
+                            <p>Wade through crystal waters to Elafonisi’s pink-shaded shores, where the Cretan and
+                                Libyan Seas merge in infinite shades of blue.</p>
+                        </div>
+                        <div class="hl-item reveal-text">
+                            <h3>The Cave of Agia Sofia</h3>
+                            <p>Step inside a cavern of quiet divinity — stalagmites, candlelight, and a small chapel
+                                carved into living rock.</p>
+                        </div>
+                        <div class="hl-item reveal-text">
+                            <h3>Flavors of the West</h3>
+                            <p>Savor the spirit of Crete in family taverns along the coast — dishes born from sun,
+                                soil,
+                                and devotion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hl-col-right">
+                    <div class="hl-img-wrapper">
+                        <img src="https://picsum.photos/id/1018/600/800" alt="Moments" class="hl-img-right">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="paralax">
+
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="./assets/js/about.js"></script>
+</body>
+
+</html>

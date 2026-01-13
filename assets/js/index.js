@@ -21,65 +21,76 @@
     smoothWheel: true,
     smoothTouch: false
   });
-    // Collect targets
-    const textEls  = Array.from(document.querySelectorAll('.reveal-text'));
-    const imageEls = Array.from(document.querySelectorAll('.reveal-image'));
-    const targets  = [...textEls, ...imageEls];
 
-    if (!targets.length) return;
-
-    // Optional: lightweight stagger for siblings
-    const applyStagger = (els, base = 70) => {
-      els.forEach((el, i) => {
-        if (!el.matches('.reveal-text')) return;
-        el.dataset.stagger = "1";
-        el.style.setProperty('--stagger', `${i * base}ms`);
-      });
-    };
-
-    // Group consecutive reveal-text siblings for nicer stagger
-    let group = [];
-    const flushGroup = () => { if (group.length) { applyStagger(group); group = []; } };
-    textEls.forEach((el, i) => {
-      const prev = textEls[i - 1];
-      if (prev && prev.parentElement === el.parentElement) {
-        group.push(el);
-        if (!group.includes(prev)) group.unshift(prev);
+  // Menu Inversion Logic (Optimized)
+  const menuEl = document.querySelector(".menu-full");
+  if (menuEl) {
+    lenis.on('scroll', ({ scroll }) => {
+      if (scroll > 2 * window.innerHeight - 100) {
+        menuEl.classList.add("inverted");
       } else {
-        flushGroup();
-        group = [el];
+        menuEl.classList.remove("inverted");
       }
     });
-    flushGroup();
+  }
+  const textEls = Array.from(document.querySelectorAll('.reveal-text'));
+  const imageEls = Array.from(document.querySelectorAll('.reveal-image'));
+  const targets = [...textEls, ...imageEls];
 
-    // If reduced motion, just mark them visible and bail
-    if (prefersReduced) {
-      targets.forEach(el => el.classList.add('is-inview'));
-      return;
-    }
+  if (!targets.length) return;
 
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-inview');
-          // Unobserve once revealed (one-time animation)
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      // Reveal a bit before fully on screen for a snappier feel
-      rootMargin: '0px 0px -15% 0px',
-      threshold: 0.12
+  // Optional: lightweight stagger for siblings
+  const applyStagger = (els, base = 70) => {
+    els.forEach((el, i) => {
+      if (!el.matches('.reveal-text')) return;
+      el.dataset.stagger = "1";
+      el.style.setProperty('--stagger', `${i * base}ms`);
     });
+  };
 
-    targets.forEach(t => io.observe(t));
-
-    // Optional: if you use Lenis, ensure IO gets regular rAF ticks (helps on some mobile browsers)
-    // Your rAF already runs; but we can ping IO’s internal checks during scroll:
-    if (window.__lenis) {
-      window.__lenis.on('scroll', () => { /* no-op; forces layout/paint cadence with Lenis */ });
+  // Group consecutive reveal-text siblings for nicer stagger
+  let group = [];
+  const flushGroup = () => { if (group.length) { applyStagger(group); group = []; } };
+  textEls.forEach((el, i) => {
+    const prev = textEls[i - 1];
+    if (prev && prev.parentElement === el.parentElement) {
+      group.push(el);
+      if (!group.includes(prev)) group.unshift(prev);
+    } else {
+      flushGroup();
+      group = [el];
     }
+  });
+  flushGroup();
+
+  // If reduced motion, just mark them visible and bail
+  if (prefersReduced) {
+    targets.forEach(el => el.classList.add('is-inview'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-inview');
+        // Unobserve once revealed (one-time animation)
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    // Reveal a bit before fully on screen for a snappier feel
+    rootMargin: '0px 0px -15% 0px',
+    threshold: 0.12
+  });
+
+  targets.forEach(t => io.observe(t));
+
+  // Optional: if you use Lenis, ensure IO gets regular rAF ticks (helps on some mobile browsers)
+  // Your rAF already runs; but we can ping IO’s internal checks during scroll:
+  if (window.__lenis) {
+    window.__lenis.on('scroll', () => { /* no-op; forces layout/paint cadence with Lenis */ });
+  }
   // rAF loop — drives Lenis updates
   function raf(time) {
     lenis.raf(time);
@@ -118,9 +129,13 @@
 
   // Parallax via [data-lenis-speed]
   const SCALE = 0.1;
+  const parallaxTargets = Array.from(document.querySelectorAll('[data-lenis-speed]')).map(el => ({
+    el,
+    speed: parseFloat(el.dataset.lenisSpeed) || 0
+  }));
+
   lenis.on('scroll', ({ scroll }) => {
-    document.querySelectorAll('[data-lenis-speed]').forEach((el) => {
-      const speed = parseFloat(el.dataset.lenisSpeed) || 0;
+    parallaxTargets.forEach(({ el, speed }) => {
       el.style.transform = `translate3d(0, ${scroll * speed * SCALE}px, 0)`;
     });
   });
@@ -166,22 +181,22 @@
     window.addEventListener('resize', update);
     update();
   }
-// ---------- Shared helpers (used by every section instance) ----------
+  // ---------- Shared helpers (used by every section instance) ----------
   function initSection(root) {
     if (!root) return;
 
     const prevBtn = root.querySelector('.slider-btn.prev');
     const nextBtn = root.querySelector('.slider-btn.next');
 
-    const leftBox   = root.querySelector('.section-2-right-down-left');
+    const leftBox = root.querySelector('.section-2-right-down-left');
     const rightHold = root.querySelector('.section-2-right-down-right-holder');
-    const leftHold  = root.querySelector('.section-2-left-holder');
+    const leftHold = root.querySelector('.section-2-left-holder');
 
-    const numWrap   = root.querySelector('.num-swap-wrap');
-    const numAllEl  = root.querySelector('.section-2-numbers-all');
-    const rightUp   = root.querySelector('.section-2-right-up'); // progress bar
+    const numWrap = root.querySelector('.num-swap-wrap');
+    const numAllEl = root.querySelector('.section-2-numbers-all');
+    const rightUp = root.querySelector('.section-2-right-up'); // progress bar
 
-    const slideEls  = Array.from(root.querySelectorAll('.section-2-slides .slide'));
+    const slideEls = Array.from(root.querySelectorAll('.section-2-slides .slide'));
     if (!slideEls.length) return;
 
     // ---- one-time holder setup
@@ -792,21 +807,23 @@ if (prevBtn) prevBtn.addEventListener('click', () => {
       return parseFloat(val) || 0;
     };
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-    const lerp  = (a, b, t) => a + (b - a) * t;
+    const lerp = (a, b, t) => a + (b - a) * t;
 
     const state = growSections.map((section) => {
-      const pin   = section.querySelector('.pin');
+      const pin = section.querySelector('.pin');
       const frame = section.querySelector('.frame');
       const video = frame ? frame.querySelector('img') : null;
+      const overlay = section.querySelector('.overlay');
 
-      // Frame (container) scale range
-      const startScale = parseFloat(section.dataset.growStart || 0.7);
-      const endScale   = parseFloat(section.dataset.growEnd   || 1.0);
+      // Circle radius range (0.25 -> 25%, 1.0 -> 100%)
+      // Default to 25% start, slightly over 100% end to ensure corners clear
+      const startRadius = parseFloat(section.dataset.growStart || 0.25) * 100;
+      const endRadius = parseFloat(section.dataset.growEnd || 1.1) * 100;
 
-      // Video: its own range + a curve exponent to change the pace
-      const vStart = parseFloat(section.dataset.videoStart ?? startScale);
-      const vEnd   = parseFloat(section.dataset.videoEnd   ?? endScale);
-      const vCurve = parseFloat(section.dataset.videoCurve || 1); // 1=linear, <1 ease-out, >1 ease-in
+      // Video: keep scale logic for inside parallax
+      const vStart = parseFloat(section.dataset.videoStart ?? 1.3);
+      const vEnd = parseFloat(section.dataset.videoEnd ?? 1.05);
+      const vCurve = parseFloat(section.dataset.videoCurve || 1);
 
       const distStr = section.dataset.growDistance
         || getComputedStyle(section).getPropertyValue('--grow-distance')
@@ -817,30 +834,58 @@ if (prevBtn) prevBtn.addEventListener('click', () => {
       section.style.setProperty('--grow-distance', `${growDistance}px`);
       section.style.height = `calc(100vh + ${growDistance}px)`;
 
-      // Initial transforms (in case CSS didn’t set them)
-      if (frame && !frame.style.transform) frame.style.transform = `scale(${startScale})`;
+      // Initial state
+      if (frame) frame.style.clipPath = `circle(${startRadius}% at 50% 50%)`;
       if (video && !video.style.transform) video.style.transform = `scale(${vStart})`;
+      if (overlay) overlay.style.opacity = 0;
 
-      return { section, pin, frame, video, startScale, endScale, vStart, vEnd, vCurve, growDistance };
+      return { section, pin, frame, video, overlay, startRadius, endRadius, vStart, vEnd, vCurve, growDistance };
     });
 
     function updateGrow() {
+      let anyActive = false;
+      const menu = document.querySelector('.menu-full'); // Get menu element
+
       state.forEach((s) => {
         if (!s.section || !s.frame) return;
         const rect = s.section.getBoundingClientRect();
 
+        // Check if this section is currently "active" (pinned or scrolling past)
+        // Active means spanning the top viewport edge (top <= 0) but not fully exited (bottom > 0)
+        // Adjust threshold slightly if needed
+        if (rect.top <= 0 && rect.bottom > 0) {
+          anyActive = true;
+        }
+
         // Base progress while pinned
         const p = clamp((-rect.top) / s.growDistance, 0, 1);
 
-        // Frame: linear
-        const frameScale = lerp(s.startScale, s.endScale, p);
-        s.frame.style.transform = `scale(${frameScale})`;
+        // Frame: clip-path circle radius
+        const currentRadius = lerp(s.startRadius, s.endRadius, p);
+        s.frame.style.clipPath = `circle(${currentRadius}% at 50% 50%)`;
+
+        // Overlay: fade in ONLY at the end (e.g. from 70% to 85%)
+        if (s.overlay) {
+          const fadeStart = 0.70;
+          const fadeEnd = 0.85;
+          const op = clamp((p - fadeStart) / (fadeEnd - fadeStart), 0, 1);
+          s.overlay.style.opacity = op;
+        }
 
         // Video: apply curve to change pace
-        const pv = Math.pow(p, s.vCurve); // <1 = faster at start, >1 = slower at start
+        const pv = Math.pow(p, s.vCurve);
         const videoScale = lerp(s.vStart, s.vEnd, clamp(pv, 0, 1));
         if (s.video) s.video.style.transform = `scale(${videoScale})`;
       });
+
+      // Toggle menu visibility
+      if (menu) {
+        if (anyActive) {
+          menu.classList.add('menu-hide-up');
+        } else {
+          menu.classList.remove('menu-hide-up');
+        }
+      }
     }
 
     function recomputeDistances() {
@@ -862,42 +907,206 @@ if (prevBtn) prevBtn.addEventListener('click', () => {
   }
 
 
- document.querySelector(".han-menu-full").addEventListener("click", function(){
-  document.querySelector(".menu-full").classList.toggle("menu-active");
- });
- const menu = document.querySelector('.menu-full');
-    if (!menu) return;
+  document.querySelector(".han-menu-full").addEventListener("click", function () {
+    document.querySelector(".menu-full").classList.toggle("menu-active");
+  });
+  const menu = document.querySelector('.menu-full');
+  if (!menu) return;
 
-    let threshold = window.innerHeight; // 100vh
-    const getY = () =>
-      (window.__lenis && typeof window.__lenis.scroll === 'number')
-        ? window.__lenis.scroll
-        : (window.scrollY || document.documentElement.scrollTop || 0);
+  let threshold = window.innerHeight; // 100vh
+  const getY = () =>
+    (window.__lenis && typeof window.__lenis.scroll === 'number')
+      ? window.__lenis.scroll
+      : (window.scrollY || document.documentElement.scrollTop || 0);
 
-    const apply = () => {
-      const y = getY();
-      if (y >= threshold) {
-        menu.classList.add('inverted');
-      } else {
-        menu.classList.remove('inverted');
-      }
-    };
-
-    // Keep threshold in sync with viewport changes
-    const onResize = () => {
-      threshold = window.innerHeight;
-      apply();
-    };
-    window.addEventListener('resize', onResize, { passive: true });
-
-    // Hook into Lenis if available; otherwise fall back to native scroll
-    if (window.__lenis && typeof window.__lenis.on === 'function') {
-      window.__lenis.on('scroll', apply);
+  const apply = () => {
+    const y = getY();
+    if (y >= threshold) {
+      menu.classList.add('inverted');
     } else {
-      window.addEventListener('scroll', apply, { passive: true });
+      menu.classList.remove('inverted');
     }
+  };
 
-    // Run once on load
+  // Keep threshold in sync with viewport changes
+  const onResize = () => {
+    threshold = window.innerHeight;
     apply();
-  
+  };
+  window.addEventListener('resize', onResize, { passive: true });
+
+  // Hook into Lenis if available; otherwise fall back to native scroll
+  if (window.__lenis && typeof window.__lenis.on === 'function') {
+    window.__lenis.on('scroll', apply);
+  } else {
+    window.addEventListener('scroll', apply, { passive: true });
+  }
+
+  // Run once on load
+  apply();
+
+  /* ===== HOVER SLIDER SECTION LOGIC ===== */
+  const hsSection = document.querySelector('.hover-slider-section');
+  if (hsSection) {
+    const links = hsSection.querySelectorAll('.hs-link');
+    const bgs = hsSection.querySelectorAll('.hs-bg-layer');
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const target = link.dataset.target;
+        // Remove active from all
+        bgs.forEach(bg => bg.classList.remove('active'));
+        // Add active to target
+        const targetBg = hsSection.querySelector(`.hs-bg-layer[data-bg="${target}"]`);
+        if (targetBg) targetBg.classList.add('active');
+      });
+
+      link.addEventListener('mouseleave', () => {
+        // Revert to default
+        bgs.forEach(bg => bg.classList.remove('active'));
+        const defaultBg = hsSection.querySelector('.hs-bg-layer[data-bg="default"]');
+        if (defaultBg) defaultBg.classList.add('active');
+      });
+    });
+  }
+
+  /* ===== ARGO SECTIONS LOGIC ===== */
+
+  /* Text splitting for animation */
+  function splitChars(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+      const words = el.innerText.trim().split(/\s+/);
+      let output = "";
+      words.forEach((word, wIndex) => {
+        output += `<span class="split-word" data-word="${wIndex}">`;
+        word.split("").forEach((char, cIndex) => {
+          output += `<span class="split-char" data-char-index="${cIndex}">${char}</span>`;
+        });
+        output += `</span> `;
+      });
+      el.innerHTML = output.trimEnd();
+    });
+  }
+  splitChars(".s-a-p-3-img-text-el-1");
+
+  /* Title Animation (Fade In) */
+  const titleEls = document.querySelectorAll(".s-a-p-3-img-text-el-1");
+  const animatedSet = new WeakSet();
+  const titleObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animatedSet.has(entry.target)) {
+        animatedSet.add(entry.target);
+        animateTitle(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { root: null, threshold: 0.3, rootMargin: "0px 0px -10% 0px" });
+
+  titleEls.forEach(el => titleObserver.observe(el));
+
+  function animateTitle(el) {
+    const chars = el.querySelectorAll(".split-char");
+    chars.forEach((char, i) => {
+      const delay = i * 15;
+      setTimeout(() => { char.style.opacity = 1; }, delay);
+    });
+  }
+
+  /* Parallax Logic */
+  const parallaxGroups = [
+    {
+      wrapper: ".s-a-p-2",
+      elements: ".s-a-p-2-img-2",
+      factors: [0.1],
+      mode: "parallax",
+    },
+    {
+      wrapper: ".s-a-p-3",
+      elements: ".s-a-p-3-img-2",
+      factors: [0.1],
+      mode: "parallax",
+    }
+  ];
+
+  /* Setup Parallax */
+  parallaxGroups.forEach(g => {
+    g.wrapperEl = document.querySelector(g.wrapper);
+    if (g.wrapperEl) {
+      g.elementsEl = document.querySelectorAll(g.elements);
+      g.offsetTop = (window.pageYOffset || document.documentElement.scrollTop) + g.wrapperEl.getBoundingClientRect().top;
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    parallaxGroups.forEach(g => {
+      if (g.wrapperEl) {
+        g.offsetTop = (window.pageYOffset || document.documentElement.scrollTop) + g.wrapperEl.getBoundingClientRect().top;
+      }
+    });
+  });
+
+  function getResponsiveScale() {
+    const maxW = 1920;
+    const minW = 850;
+    if (window.innerWidth >= maxW) return 1;
+    if (window.innerWidth <= minW) return 0.5;
+    const pct = (window.innerWidth - minW) / (maxW - minW);
+    return 0.5 + (pct * 0.5);
+  }
+  let responsiveScale = getResponsiveScale();
+  window.addEventListener("resize", () => { responsiveScale = getResponsiveScale(); });
+
+  function mergeTransform(el, newTranslateY) {
+    let existing = el.getAttribute("data-original-transform");
+    if (!existing) {
+      const style = el.getAttribute("style") || "";
+      const cssTransform = style.match(/transform:\s*([^;]+)/);
+      if (cssTransform) existing = cssTransform[1].trim();
+      else {
+        const computed = window.getComputedStyle(el).transform;
+        existing = computed === "none" ? "" : computed;
+      }
+      el.setAttribute("data-original-transform", existing); // caching
+    }
+    existing = (existing || "").replace(/translateY\([^)]*\)/g, "").trim();
+    if (!existing || existing === "none") return `translateY(${newTranslateY}px)`;
+    return `${existing} translateY(${newTranslateY}px)`.trim();
+  }
+
+  /* Main Parallax Update Loop */
+  function updateArgoParallax() {
+    const scroll = (window.__lenis && typeof window.__lenis.scroll === 'number')
+      ? window.__lenis.scroll
+      : (window.scrollY || document.documentElement.scrollTop || 0);
+
+    const vh = window.innerHeight;
+
+    parallaxGroups.forEach(g => {
+      if (!g.wrapperEl) return;
+      const rect = g.wrapperEl.getBoundingClientRect();
+
+      // Visibility check
+      if (rect.top - 1.5 * vh < 0 && rect.top + g.wrapperEl.clientHeight + 0.5 * vh > 0) {
+        g.elementsEl.forEach((el, i) => {
+          const factor = g.factors[i];
+          if (factor === undefined) return;
+
+          if (g.mode === "parallax") {
+            const val = factor * responsiveScale * (g.offsetTop - scroll);
+            el.style.transform = mergeTransform(el, val);
+          }
+        });
+      }
+    });
+  }
+
+  // Hook parallax into the existing scroll listener if Lenis is used, or fallback
+  if (window.__lenis) {
+    window.__lenis.on('scroll', updateArgoParallax);
+  } else {
+    window.addEventListener('scroll', updateArgoParallax);
+  }
+  // Initial call
+  updateArgoParallax();
+
 })();

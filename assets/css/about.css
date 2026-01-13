@@ -1,0 +1,371 @@
+/* =========================================
+   ABOUT PAGE HERO STYLES
+   ========================================= */
+
+/* Use a variable for scroll distance so JS can control height */
+:root {
+    --hero-scroll-height: 100vh;
+}
+
+.about-hero-section {
+    height: calc(100vh + var(--hero-scroll-height));
+    position: relative;
+    background-color: #1a1a1a;
+    /* Dark background per reference */
+    padding-top: 0px;
+}
+
+.about-hero-pin {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Common Image Styles */
+.about-hero-content img {
+    /* width/height controlled by container */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Center Image Container */
+.ah-center {
+    /* Initial state: Rectangular in center */
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    z-index: 2;
+    /* Will be animated via transform: scale() or width/height */
+    /* Using specific dimensions is easier for transform logic */
+    /* But reference says "expands... until full screen" */
+    /* We'll start centered and use JS to set explicit w/h style */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.ah-center-img-holder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ah-center-overlay-tint {
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    opacity: 0;
+    z-index: 2;
+    /* Content image is presumably z-index 1 or default, this sits on top */
+    pointer-events: none;
+}
+
+.ah-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    /* Ensure it is above images */
+    text-align: center;
+    /* Ensure text is centered */
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+}
+
+.ah-overlay h1 {
+    font-family: "Work Sans", sans-serif;
+    color: white;
+    font-size: clamp(40px, 5vw, 120px);
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+/* Side Images */
+@keyframes growSideWidth {
+    from {
+        width: 0vw;
+    }
+
+    to {
+        width: 16vw;
+    }
+}
+
+.ah-side {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Centered vertically */
+    width: 0vw;
+    /* Start at 0 */
+    height: 38vh;
+    z-index: 1;
+    animation: growSideWidth .8s ease-out forwards;
+    animation-delay: 0.2s;
+    /* Slight delay */
+}
+
+.ah-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ah-left {
+    left: 0;
+    top: 65%;
+}
+
+.ah-right {
+    right: 0;
+    top: 28%;
+}
+
+/* INTRODUCTION SECTION */
+.introduction-about {
+    /* Light gray background from concept */
+    align-items: flex-start;
+}
+
+.introduction-about .col-left {
+    grid-column: span 6;
+    padding-right: 50px;
+}
+
+.introduction-about .col-left h2 {
+    font-size: clamp(40px, 5vw, 96px);
+    /* Large sizing */
+    line-height: 0.9;
+    font-weight: 300;
+    /* Thin but large */
+    text-transform: uppercase;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    /* Consisten font, maybe "Clash Display" if available */
+}
+
+.introduction-about .col-right {
+    grid-column: span 6;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.introduction-about .col-right h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+.intro-body p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-weight: 300;
+    color: #333;
+}
+
+.intro-body p em {
+    font-style: italic;
+}
+
+.read-more {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+    width: fit-content;
+    transition: opacity 0.3s;
+}
+
+.read-more:hover {
+    opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .introduction-about .col-left,
+    .introduction-about .col-right {
+        grid-column: span 12;
+        padding: 0;
+    }
+
+    .introduction-about .col-left {
+        margin-bottom: 40px;
+    }
+}
+
+/* HIGHLIGHTS SECTION */
+.highlights-section {
+    align-items: flex-start;
+}
+
+.highlights-section .maxw {
+    max-width: 1920px;
+}
+
+.hl-col-left {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 5vh;
+}
+
+.hl-img-wrapper-small {
+    aspect-ratio: 1/1.3;
+
+    transform: translateX(43%);
+    width: 90%;
+
+}
+
+
+
+.hl-img-wrapper:first-child {
+    /* Top image */
+    margin-top: 0;
+    aspect-ratio: 1/1.4;
+}
+
+.hl-col-center {
+    grid-column: 5/span 4;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.hl-col-center h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 64px;
+    font-weight: 300;
+    margin-bottom: 44px;
+    text-transform: uppercase;
+}
+
+.hl-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.hl-item h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    text-transform: none;
+}
+
+.hl-item p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.hl-separator {
+    border-top: 1px solid #dcdcdc;
+    width: 200px;
+    margin: 10px auto;
+}
+
+.hl-col-right {
+    grid-column: 10/ span 3;
+    display: flex;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.hl-col-right .hl-img-wrapper {
+    margin-top: 0;
+    aspect-ratio: 1/1.4;
+}
+
+.hl-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    will-change: transform;
+}
+
+.hl-item {
+    position: relative;
+}
+
+.hl-col-center .hl-list .hl-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #bea380;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(50px / 2 + 1px));
+}
+
+/* Responsive Highlights */
+@media (max-width: 1024px) {
+
+    .hl-col-left,
+    .hl-col-center,
+    .hl-col-right {
+        grid-column: span 12;
+    }
+
+    .hl-col-left {
+        flex-direction: row;
+        gap: 20px;
+        order: 2;
+    }
+
+    .hl-col-center {
+        order: 1;
+        margin-bottom: 40px;
+    }
+
+    .hl-col-right {
+        order: 3;
+        padding-top: 40px;
+    }
+}
+
+.paralax {
+    height: 100vh;
+}
