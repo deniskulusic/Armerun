@@ -1,0 +1,143 @@
+/* =========================================
+   PRIVACY PAGE STYLES
+   ========================================= */
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+.privacy-page-section {
+    padding-top: 200px;
+    min-height: 80vh;
+}
+
+.privacy-page-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faq-main-title {
+    font-family: "minion-pro", serif;
+    font-size: 120px;
+    font-weight: 400;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -2px;
+}
+
+.privacy-content {
+    width: 100%;
+    max-width: 1200px;
+    /* Align with FAQ grid width */
+}
+
+.privacy-intro {
+    margin-bottom: 40px;
+    font-family: "minion-pro", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-iron-gate);
+}
+
+/* =========================================
+   SECTIONS
+   ========================================= */
+.privacy-section {
+    border-top: 1px solid var(--color-accessible-beige);
+    /* Separator lines */
+    padding: 40px 0;
+}
+
+.privacy-section:last-child {
+    border-bottom: 1px solid var(--color-accessible-beige);
+}
+
+.privacy-section h2 {
+    font-family: "Cera Pro", sans-serif;
+    /* Or specific font from screenshot if different */
+    font-size: 32px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: var(--color-iron-gate);
+    letter-spacing: 0px;
+    line-height: 1.5;
+}
+
+.privacy-section p {
+    font-family: "minion-pro", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-iron-gate);
+    margin-bottom: 20px;
+}
+
+.privacy-section ul {
+    list-style: none;
+    /* Custom bullet if needed, or default but styled */
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.privacy-section ul li {
+    font-family: "minion-pro", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-iron-gate);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.privacy-section ul li::before {
+    content: "•";
+    color: var(--color-accessible-beige);
+    /* Gold bullet */
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+    .faq-main-title {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .privacy-page-section {
+        padding-top: 120px;
+    }
+
+    .faq-main-title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+
+    .privacy-section h2 {
+        font-size: 24px;
+    }
+}
+
+/* =========================================
+   TEXT ANIMATIONS (SplitChars reused styles)
+   ========================================= */
+.split-word {
+    white-space: nowrap;
+    font-weight: inherit;
+    display: inline-block;
+}
+
+.split-char {
+    display: inline-block;
+    opacity: 0;
+    will-change: opacity;
+    font-weight: inherit;
+    transition: opacity 0.5s ease;
+}

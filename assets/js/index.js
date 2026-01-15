@@ -148,8 +148,8 @@
     const btnPrev = document.querySelector('.slider-btn.prev');
     const btnNext = document.querySelector('.slider-btn.next');
 
-    const GAP = 32;     // px
-    const CARD_W = 640; // px
+    const GAP = 28;     // px
+    const CARD_W = 470; // px
     const STEP = CARD_W + GAP;
 
     let offset = 0;
