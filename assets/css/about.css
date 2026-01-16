@@ -10,7 +10,7 @@
 .about-hero-section {
     height: calc(100vh + var(--hero-scroll-height));
     position: relative;
-    background-color: var(--color-iron-gate);
+    background-color: var(--color-dried-lavender);
     /* Dark background per reference */
     padding-top: 0px;
 }
@@ -111,7 +111,7 @@
 
 .ah-overlay h1 {
     font-family: "minion-pro", serif;
-    color: white;
+    color: var(--color-divine-white);
     font-size: clamp(40px, 5vw, 120px);
     text-transform: uppercase;
     font-weight: 300;
@@ -399,6 +399,15 @@
     }
 }
 
+.click-underline-gold {
+    color: var(--color-prussian-blue);
+    font-size: 16px;
+}
+
+.click-underline-gold::before {
+    background-color: var(--color-prussian-blue);
+}
+
 /* =========================================
    FLOATING OVERVIEW BAR
    ========================================= */
@@ -439,6 +448,20 @@
     flex-wrap: wrap;
 }
 
+.fob-heading {
+    grid-column: 2;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fob-heading-text {
+    font-size: 34px;
+    line-height: 1;
+}
+
 .fob-link {
     font-family: "Cera Pro", sans-serif;
     font-size: 14px;
@@ -471,7 +494,7 @@
 .button-gold {
     background-color: var(--color-prussian-blue);
     /* Gold/Beige prompt color or project color */
-    color: white;
+    color: var(--color-divine-white);
     border: none;
     font-family: "Cera Pro", sans-serif;
     font-weight: 600;
@@ -584,7 +607,7 @@
     height: 100px;
     background-color: var(--color-prussian-blue);
     /* Gold/Primary Color */
-    color: white;
+    color: var(--color-divine-white);
     border-radius: 50%;
     pointer-events: none !important;
     z-index: 9999;
@@ -622,7 +645,7 @@
     left: 0;
     width: 100vw;
     height: 100dvh;
-    background-color: white;
+    background-color: var(--color-divine-white);
     z-index: 10000;
 
     display: flex;
@@ -719,7 +742,7 @@
 /* Bottom Thumbnails */
 .lb-bottom-bar {
     height: 120px;
-    background-color: white;
+    background-color: var(--color-divine-white);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -797,7 +820,6 @@
    FAQ SECTION
    ========================================= */
 .faq-section {
-    background-color: white;
     /* Clean background */
     color: var(--color-iron-gate);
 }
@@ -923,7 +945,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    color: white;
+    color: var(--color-divine-white);
     padding: 0;
     margin-top: 140px;
 }
@@ -979,6 +1001,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 20px;
+    color: var(--color-divine-white);
 }
 
 .hs-header h2 {
@@ -986,7 +1009,7 @@
     font-size: 64px;
     line-height: 1.1;
     text-transform: uppercase;
-    color: white;
+    color: var(--color-divine-white);
 }
 
 .hs-header h2 em {
@@ -1010,7 +1033,7 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: white;
+    color: var(--color-divine-white);
     padding: 20px 0;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -1043,14 +1066,14 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s;
-    color: white;
+    color: var(--color-divine-white);
 }
 
 /* Rotate icon or fill on hover */
 .hs-link:hover .hs-icon {
-    background: white;
+    background: var(--color-divine-white);
     color: var(--color-iron-gate);
-    border-color: white;
+    border-color: var(--color-divine-white);
 }
 
 /* Separator line */
@@ -1081,8 +1104,8 @@
 }
 
 .button-white {
-    border: 1px solid white;
-    color: white;
+    border: 1px solid var(--color-divine-white);
+    color: var(--color-divine-white);
     text-transform: uppercase;
 }
 
@@ -1222,7 +1245,7 @@
 
 @media screen and (max-width: 1500px) {
     .s-a-p-3-img-1-holder {
-        padding-top: 166%;
+        padding-top: 144%;
         position: relative;
     }
 

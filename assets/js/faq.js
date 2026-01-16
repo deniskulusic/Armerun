@@ -56,6 +56,12 @@
                 item.classList.add('active');
                 body.style.maxHeight = body.scrollHeight + 'px';
             }
+
+            // Update Lenis scroll layout
+            setTimeout(() => {
+                lenis.resize();
+            }, 550); // wait for transition to finish
+            lenis.resize();
         });
     });
 

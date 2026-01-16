@@ -91,7 +91,7 @@ header img {
   opacity: 0.8;
   color: var(--color-divine-white);
   opacity: 1;
-  width: 40%;
+  width: 50%;
   text-align: start;
   margin-bottom: 14px;
 }
@@ -767,7 +767,7 @@ h4 .word-token {
   color: var(--color-divine-white);
   align-items: end;
   padding-bottom: 140px;
-  width: 800px;
+  width: 900px;
   padding-left: calc(50px + (100vw - 1800px) / 2);
   /* optional gradient for readability */
   /* background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.1)); */
@@ -1002,6 +1002,17 @@ h4 .word-token {
   text-align: center;
 }
 
+.socials-h3 {
+  grid-column: span 12;
+  text-align: center;
+}
+
+.section-8-span {
+  color: var(--color-prussian-blue);
+  font-style: italic;
+  font-weight: 600;
+}
+
 .section-8-element {
   grid-column: span 4;
   margin-top: 70px;
@@ -1078,5 +1089,178 @@ h4 .word-token {
   }
 }
 
+.prefooter-container {
+  height: 60vh;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.prefooter-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--color-iron-gate);
+  opacity: .5;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.prefooter-text {
+  position: absolute;
+  left: calc((100% - 1700px) / 2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70%;
+  z-index: 3;
+}
+
+.prefooter-text .main-button {
+  margin-top: 24px;
+}
+
+.prefooter-text-heading {
+  color: var(--color-divine-white);
+}
+
+@media (max-width: 1800px) {
+  .prefooter-text {
+    left: 50px;
+  }
+}
+
+.prefooter img {
+  width: 100%;
+  height: auto;
+}
+
+.site-footer {
+  margin-top: 0px;
+}
+
+/* =========================================
+SIGNATURE EXPERIENCES SECTION
+========================================= */
+.section-signature {
+  /* Dark background from screenshot */
+  color: var(--color-iron-gate);
+}
+
+.sig-heading {
+  text-align: center;
+  font-family: "Cera Pro", sans-serif;
+  /* Or custom serif from screenshot if matched */
+  font-weight: 300;
+  font-size: 60px;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-iron-gate);
+  /* Gold/Beige tint from screenshot text */
+}
+
+/* Override reveal text color for this section if needed */
+.section-signature .sig-heading {
+  color: var(--color-iron-gate);
+  ;
+  /* Adjusting to a light beige/gold */
+}
+
+.sig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 Columns */
+  gap: 40px;
+}
+
+.sig-card {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover Effect: Dim/Scale siblings */
+.sig-grid:hover .sig-card {
+  opacity: 0.75;
+  transform: scale(0.95);
+}
+
+.sig-grid .sig-card:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sig-img-container {
+  width: 100%;
+  aspect-ratio: 1/1.2;
+  /* Square images per screenshot */
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.sig-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.sig-card:hover .sig-img-container img {
+  transform: scale(1.05);
+}
+
+.sig-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sig-subtitle {
+  font-family: "Cera Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-iron-gate);
+  opacity: 0.8;
+}
+
+.sig-title {
+  font-family: "Cera Pro", sans-serif;
+  /* Or specific decorative font */
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--color-iron-gate);
+  margin: 0;
+}
+
+.sig-desc {
+  font-family: "minion-pro", serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-iron-gate);
+  /* Muted text color */
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sig-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sig-heading {
+    font-size: 40px;
+  }
+
+  .sig-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /*# sourceMappingURL=index.css.map */

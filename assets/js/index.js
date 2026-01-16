@@ -1025,6 +1025,12 @@ if (prevBtn) prevBtn.addEventListener('click', () => {
       elements: ".s-a-p-3-img-2",
       factors: [0.1],
       mode: "parallax",
+    },
+    {
+      wrapper: ".prefooter-container",
+      elements: ".prefooter-container img",
+      factors: [-0.6],
+      mode: "parallax",
     }
   ];
 

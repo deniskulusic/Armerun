@@ -17,6 +17,15 @@
     // Make Lenis global for scroll access in other functions
     window.__lenis = lenis;
 
+    // Force Lenis to recalculate layout after everything (images) has loaded
+    window.addEventListener('load', () => {
+        lenis.resize();
+        // Fallback for late-loading resources
+        setTimeout(() => {
+            lenis.resize();
+        }, 1000);
+    });
+
     // Menu logic
     const menuFull = document.querySelector(".menu-full");
     document.querySelector(".han-menu-full").addEventListener("click", function () {
@@ -321,42 +330,46 @@
     window.addEventListener('resize', updateFobMetrics);
     setTimeout(updateFobMetrics, 500);
 
-    if (fob && fobLinksContainer && stickySections.length > 0) {
-        // 1. Generate Links
-        stickySections.forEach(section => {
-            const label = section.getAttribute('data-sticky');
-            if (label) {
-                const link = document.createElement('a');
-                link.className = 'fob-link';
-                link.innerText = label;
-                link.dataset.targetId = label;
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    lenis.scrollTo(section, { offset: -50 });
-                });
-                fobLinksContainer.appendChild(link);
-            }
-        });
-
-        // 2. Observer for Active Section (Replaces Scroll Loop Calculation)
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('data-sticky');
-                    // Update active class
-                    document.querySelectorAll('.fob-link').forEach(l => {
-                        l.classList.toggle('active', l.dataset.targetId === id);
+    if (fob) {
+        // 1. Generate Links (Only if container and sections exist)
+        if (fobLinksContainer && stickySections.length > 0) {
+            stickySections.forEach(section => {
+                const label = section.getAttribute('data-sticky');
+                if (label) {
+                    const link = document.createElement('a');
+                    link.className = 'fob-link';
+                    link.innerText = label;
+                    link.dataset.targetId = label;
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        lenis.scrollTo(section, { offset: -50 });
                     });
+                    fobLinksContainer.appendChild(link);
                 }
             });
-        }, {
-            rootMargin: "-40% 0px -40% 0px", // Middle of screen
-            threshold: 0
-        });
 
-        stickySections.forEach(sec => sectionObserver.observe(sec));
+            // 2. Observer for Active Section (Replaces Scroll Loop Calculation)
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('data-sticky');
+                        // Update active class
+                        document.querySelectorAll('.fob-link').forEach(l => {
+                            l.classList.toggle('active', l.dataset.targetId === id);
+                        });
+                    }
+                });
+            }, {
+                rootMargin: "-40% 0px -40% 0px", // Middle of screen
+                threshold: 0
+            });
+
+            stickySections.forEach(sec => sectionObserver.observe(sec));
+        }
 
         // 3. Simple Visibility Toggle
+        // Check for window.__lenis just in case, though we defined 'lenis' locally in this scope.
+        // Using the local 'lenis' variable.
         lenis.on('scroll', ({ scroll }) => {
             const pastHero = scroll > winH + fobHeight;
             const beforeFooter = (scroll + winH) < footerTop;
@@ -603,7 +616,6 @@
             const item = header.parentElement;
             const body = item.querySelector('.faq-body');
             const isOpen = item.classList.contains('active');
-
             document.querySelectorAll('.faq-item').forEach(other => {
                 if (other !== item) {
                     other.classList.remove('active');
@@ -618,6 +630,12 @@
                 item.classList.add('active');
                 body.style.maxHeight = body.scrollHeight + 'px';
             }
+
+            // Update Lenis scroll layout
+            setTimeout(() => {
+                lenis.resize();
+            }, 550); // wait for transition to finish
+            lenis.resize();
         });
     });
 
